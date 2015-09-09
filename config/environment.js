@@ -18,6 +18,20 @@ module.exports = function(environment) {
       // when it is created
     }
   };
+  
+  ENV.contentSecurityPolicy = {
+    'connect-src': "'self' *"
+  };
+  
+  
+  ENV['ember-simple-auth'] = {
+	base: {
+		store: 'session-store:local-storage'
+	},
+    authorizer: 'authorizer:custom',
+    crossOriginWhitelist: ['http://api.pharmadomicile.fr/'],
+    routeAfterAuthentication: '/protected'
+  };
 
   if (environment === 'development') {
     // ENV.APP.LOG_RESOLVER = true;
